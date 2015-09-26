@@ -36,10 +36,10 @@ cacheSolve <- function(x, ...) {      # Return a matrix that is the inverse of '
         if(!is.null(InvMatrix)) {      #First checks to see if inverse of the special ""matrix"" has already been calculated
                 message("getting cached data")   #If so, it gets the inverse from the cache and skips the computation.
                 return(InvMatrix)
-        }
-        data <- x$get()                   
+        }else{data <- x$get()                   
         InvMatrix <- solve(data, ...)     #Otherwise, it calculates the inverse of the data
         x$setInvMatrix(InvMatrix)         # sets the value of the inverse in the cache via the setInvMatrix function.
-        InvMatrix
+        return(InvMatrix)
+        }
         
 }
